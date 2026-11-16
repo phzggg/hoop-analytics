@@ -1,134 +1,134 @@
-/// Uma linha por time e jogo finalizado com box score coletado.
+/// One row per team and finished game with collected box score.
 table 'Estatísticas de Times'
 
-	/// Identificador ESPN da partida.
+	/// ESPN match identifier.
 	column 'Jogo Id'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: game_id
 
-	/// Identificador ESPN do time.
+	/// ESPN team identifier.
 	column 'Time Id'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: team_id
 
-	/// Time no box score da partida.
+	/// Team in the match box score.
 	column Time
 		dataType: string
 		summarizeBy: none
 		sourceColumn: team_name
 
-	/// Sigla do time.
+	/// Team abbreviation.
 	column Sigla
 		dataType: string
 		summarizeBy: none
 		sourceColumn: team_abbreviation
 
-	/// Endereço da imagem do time.
+	/// Team logo URL.
 	column Logo
 		dataType: string
 		dataCategory: ImageUrl
 		summarizeBy: none
 		sourceColumn: team_logo
 
-	/// Indica se o time jogou em casa ou fora.
+	/// Indicates if the team played home or away.
 	column 'Casa ou fora'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: home_away
 
-	/// Pontos marcados pelo time na partida.
+	/// Points scored by team in the match.
 	column 'Pontos feitos'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: points_for
 
-	/// Pontos do adversário na partida.
+	/// Opponent points in the match.
 	column 'Pontos sofridos'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: points_against
 
-	/// Resultado do time na partida.
+	/// Team result in the match.
 	column Resultado
 		dataType: string
 		summarizeBy: none
 		sourceColumn: result
 
-	/// Arremessos de quadra convertidos.
+	/// Field goals made.
 	column 'Arremessos convertidos'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: field_goals_made
 
-	/// Arremessos de quadra tentados.
+	/// Field goals attempted.
 	column 'Arremessos tentados'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: field_goals_attempted
 
-	/// Arremessos de três pontos convertidos.
+	/// Three-point field goals made.
 	column 'Bolas de três convertidas'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: three_point_field_goals_made
 
-	/// Arremessos de três pontos tentados.
+	/// Three-point field goals attempted.
 	column 'Bolas de três tentadas'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: three_point_field_goals_attempted
 
-	/// Lances livres convertidos.
+	/// Free throws made.
 	column 'Lances livres convertidos'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: free_throws_made
 
-	/// Lances livres tentados.
+	/// Free throws attempted.
 	column 'Lances livres tentados'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: free_throws_attempted
 
-	/// Rebotes do time.
+	/// Team rebounds.
 	column Rebotes
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: rebounds
 
-	/// Assistências do time.
+	/// Team assists.
 	column Assistências
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: assists
 
-	/// Roubos de bola do time.
+	/// Team steals.
 	column Roubos
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: steals
 
-	/// Tocos do time.
+	/// Team blocks.
 	column Tocos
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: blocks
 
-	/// Perdas de bola do time.
+	/// Team turnovers.
 	column 'Perdas de bola'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: turnovers
 
-	/// Pontos marcados no garrafão.
+	/// Points scored in the paint.
 	column 'Pontos no garrafão'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: points_in_paint
 
-	/// Pontos em contra-ataque.
+	/// Fast break points.
 	column 'Pontos em contra-ataque'
 		dataType: int64
 		summarizeBy: none

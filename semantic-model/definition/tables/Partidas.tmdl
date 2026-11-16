@@ -1,93 +1,93 @@
-/// Uma linha por partida, incluindo jogos agendados e finalizados.
+/// One row per match, including scheduled and finished games.
 table Partidas
 
-	/// Identificador ESPN da partida.
+	/// ESPN match identifier.
 	column 'Jogo Id'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: game_id
 
-	/// Data da partida.
+	/// Match date.
 	column Data
 		dataType: dateTime
 		summarizeBy: none
 		sourceColumn: game_date
 
-	/// Temporada informada pela ESPN.
+	/// Season provided by ESPN.
 	column Temporada
 		dataType: string
 		summarizeBy: none
 		sourceColumn: season_name
 
-	/// Fase da temporada informada pela ESPN.
+	/// Season phase provided by ESPN.
 	column Fase
 		dataType: string
 		summarizeBy: none
 		sourceColumn: season_type
 
-	/// Identificador ESPN do time mandante.
+	/// ESPN home team identifier.
 	column 'Mandante Id'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: home_team_id
 
-	/// Time mandante.
+	/// Home team.
 	column Mandante
 		dataType: string
 		summarizeBy: none
 		sourceColumn: home_team
 
-	/// Sigla do time mandante.
+	/// Home team abbreviation.
 	column 'Sigla mandante'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: home_team_abbreviation
 
-	/// Endereço da imagem do time mandante.
+	/// Home team logo URL.
 	column 'Logo mandante'
 		dataType: string
 		dataCategory: ImageUrl
 		summarizeBy: none
 		sourceColumn: home_team_logo
 
-	/// Identificador ESPN do time visitante.
+	/// ESPN away team identifier.
 	column 'Visitante Id'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: away_team_id
 
-	/// Time visitante.
+	/// Away team.
 	column Visitante
 		dataType: string
 		summarizeBy: none
 		sourceColumn: away_team
 
-	/// Sigla do time visitante.
+	/// Away team abbreviation.
 	column 'Sigla visitante'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: away_team_abbreviation
 
-	/// Endereço da imagem do time visitante.
+	/// Away team logo URL.
 	column 'Logo visitante'
 		dataType: string
 		dataCategory: ImageUrl
 		summarizeBy: none
 		sourceColumn: away_team_logo
 
-	/// Placar do mandante; vazio quando indisponível.
+	/// Home team score; empty when unavailable.
 	column 'Pontos mandante'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: home_score
 
-	/// Placar do visitante; vazio quando indisponível.
+	/// Away team score; empty when unavailable.
 	column 'Pontos visitante'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: away_score
 
-	/// Situação da partida publicada pela ESPN.
+	/// Match status published by ESPN.
 	column Situação
 		dataType: string
 		summarizeBy: none

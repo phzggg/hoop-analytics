@@ -1,4 +1,4 @@
-/// Análise de jogadores NBA por jogo, com dados públicos ESPN.
+/// NBA player analysis by game, with public ESPN data.
 model 'NBA Analise Jogadores'
 	culture: pt-BR
 	defaultPowerBIDataSourceVersion: powerBI_V3

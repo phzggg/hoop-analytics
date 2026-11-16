@@ -1,4 +1,4 @@
-/// Desempenho de jogadores NBA por jogo, baseado em dados públicos ESPN.
+/// NBA player performance by game, based on public ESPN data.
 database 'NBA Analise Jogadores'
 	id: <SEMANTIC_MODEL_ID>
 	compatibilityLevel: 1702

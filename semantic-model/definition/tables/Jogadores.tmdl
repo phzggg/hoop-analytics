@@ -1,4 +1,4 @@
-/// Jogadores identificados pela ESPN nos jogos coletados.
+/// Players identified by ESPN in collected games.
 table Jogadores
 	lineageTag: 26ceacc3-69b2-4c81-9617-63bf57872782
 
@@ -9,20 +9,20 @@ table Jogadores
 		summarizeBy: none
 		sourceColumn: player_id
 
-	/// Nome do jogador publicado pela ESPN.
+	/// Player name published by ESPN.
 	column Jogador
 		dataType: string
 		lineageTag: 525b45e5-58ab-4384-92f0-30078358883f
 		summarizeBy: none
 		sourceColumn: player_name
 
-	/// Última posição observada nos jogos coletados.
+	/// Last position observed in collected games.
 	column Posição
 		dataType: string
 		summarizeBy: none
 		sourceColumn: position
 
-	/// Última foto observada nos jogos coletados.
+	/// Last photo observed in collected games.
 	column Foto
 		dataType: string
 		dataCategory: ImageUrl

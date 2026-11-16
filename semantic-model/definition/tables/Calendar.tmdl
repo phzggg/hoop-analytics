@@ -1,9 +1,9 @@
-/// Calendário contínuo para filtrar a data de cada jogo.
+/// Continuous calendar to filter the date of each game.
 table Calendário
 	lineageTag: 723cf421-7f31-4a64-8304-3bfd6aebdf80
 	dataCategory: Time
 
-	/// Data do jogo.
+	/// Game date.
 	column Data
 		dataType: dateTime
 		isUnique
@@ -12,21 +12,21 @@ table Calendário
 		summarizeBy: none
 		sourceColumn: Data
 
-	/// Ano da partida.
+	/// Year of the match.
 	column Ano
 		dataType: int64
 		lineageTag: bd84093f-fdab-4cf3-a974-45657285ea93
 		summarizeBy: none
 		sourceColumn: Ano
 
-	/// Número do mês da partida.
+	/// Month number of the match.
 	column Mês
 		dataType: int64
 		lineageTag: e6ac403e-e7a2-4ca3-9fff-054c65f89b98
 		summarizeBy: none
 		sourceColumn: Mês
 
-	/// Dia do mês da partida.
+	/// Day of the month of the match.
 	column Dia
 		dataType: int64
 		lineageTag: 53d3e990-e7f9-40e7-a1b6-2fcd05c7ab57

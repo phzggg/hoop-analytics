@@ -1,6 +1,6 @@
 {
     "properties":  {
-                       "description":  "Processa lotes ESPN ja enviados ao OneLake. Nao faz coleta externa nem tem agendamento.",
+                       "description":  "Processes ESPN batches already sent to OneLake. Does not perform external collection and has no scheduling.",
                        "activities":  [
                                           {
                                               "name":  "17_ESPN_Coleta_Automatica",
