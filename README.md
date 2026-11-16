@@ -81,11 +81,13 @@ See [Architecture](./docs/architecture.md) and
 | Directory | Contents |
 | --- | --- |
 | [app_nba_stats](./app_nba_stats/) | Fabric App source, data access, publisher and tests |
-| [notebooks](./notebooks/) | Fabric ingestion and transformation notebooks |
-| [fabric-artifacts/pipeline](./fabric-artifacts/pipeline/) | Pipeline definition with environment identifiers replaced |
-| [semantic-model](./semantic-model/) | Semantic model TMDL definition with environment identifiers replaced |
+| [notebooks](./notebooks/) | Fabric ingestion and transformation notebooks organized by medallion layer (bronze, silver, gold) |
+| [fabric](./fabric/) | Microsoft Fabric artifacts including pipeline definitions and semantic model |
+| [fabric/pipeline](./fabric/pipeline/) | Pipeline definition with environment identifiers replaced |
+| [fabric/semantic-model](./fabric/semantic-model/) | Semantic model TMDL definition with environment identifiers replaced |
 | [config](./config/) | Configuration templates |
 | [docs](./docs/) | Architecture, implementation and product documentation |
+| [data](./data/) | Sample and reference data |
 
 ## Getting Started
 
