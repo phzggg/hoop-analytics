@@ -1,0 +1,35 @@
+# Local environments, credentials, and deployment metadata
+.env
+.env.*
+!.env.example
+!.env.template
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.template
+**/rayfin/.deployments.json
+**/rayfin/.project.json
+**/rayfin/rayfin.yml
+**/rayfin/connectors/*/metadata.json
+**/rayfin.config.json
+.vscode/
+
+# Dependencies, generated output, and caches
+**/node_modules/
+**/dist/
+**/.temp/
+**/.vite/
+**/__pycache__/
+*.py[cod]
+*.tsbuildinfo
+.pytest_cache/
+coverage/
+logs/
+*.log
+
+# Local data and third-party material pending redistribution review
+data/sample/
+**/local-data/
+**/public/nba-snapshot.json
+app_nba_stats/publisher.ipynb
+**/.agents/

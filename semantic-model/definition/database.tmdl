@@ -1,0 +1,7 @@
+/// Desempenho de jogadores NBA por jogo, baseado em dados públicos ESPN.
+database 'NBA Analise Jogadores'
+	id: <SEMANTIC_MODEL_ID>
+	compatibilityLevel: 1702
+	compatibilityMode: powerBI
+	language: 1033
+

@@ -1,0 +1,45 @@
+/// Pontos por time e período em partidas finalizadas.
+table Períodos
+
+	/// Identificador ESPN da partida.
+	column 'Jogo Id'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: game_id
+
+	/// Identificador ESPN do time.
+	column 'Time Id'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: team_id
+
+	/// Time que marcou os pontos.
+	column Time
+		dataType: string
+		summarizeBy: none
+		sourceColumn: team_name
+
+	/// Número do período, incluindo prorrogações.
+	column Período
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: period_number
+
+	/// Descrição do período publicada pela fonte.
+	column 'Descrição do período'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: period_label
+
+	/// Pontos do time no período.
+	column 'Pontos no período'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: points
+
+	partition Períodos = entity
+		mode: directLake
+		source
+			entityName: gold_espn_game_periods
+			expressionSource: 'DirectLake NBA'
+

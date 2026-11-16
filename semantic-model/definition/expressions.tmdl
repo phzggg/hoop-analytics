@@ -1,0 +1,4 @@
+/// Fonte OneLake do lakehouse NBA.
+expression 'DirectLake NBA' = let Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/<WORKSPACE_ID>/<LAKEHOUSE_ID>", [HierarchicalNavigation=true]) in Source
+	lineageTag: 245d77db-a6a0-475b-87c9-9aec19147f98
+

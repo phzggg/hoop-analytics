@@ -1,0 +1,23 @@
+/// Análise de jogadores NBA por jogo, com dados públicos ESPN.
+model 'NBA Analise Jogadores'
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_ProTooling = ["MCP-PBIModeling"]
+
+annotation __PBI_ServiceStoredInTmdl = reserved
+
+annotation __LastRPTime = 134392832817649446
+
+ref table Jogadores
+ref table Participações
+ref table Calendário
+ref table Partidas
+ref table 'Estatísticas de Times'
+ref table Períodos
+

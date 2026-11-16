@@ -1,0 +1,142 @@
+/// Uma linha por time e jogo finalizado com box score coletado.
+table 'Estatísticas de Times'
+
+	/// Identificador ESPN da partida.
+	column 'Jogo Id'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: game_id
+
+	/// Identificador ESPN do time.
+	column 'Time Id'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: team_id
+
+	/// Time no box score da partida.
+	column Time
+		dataType: string
+		summarizeBy: none
+		sourceColumn: team_name
+
+	/// Sigla do time.
+	column Sigla
+		dataType: string
+		summarizeBy: none
+		sourceColumn: team_abbreviation
+
+	/// Endereço da imagem do time.
+	column Logo
+		dataType: string
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: team_logo
+
+	/// Indica se o time jogou em casa ou fora.
+	column 'Casa ou fora'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: home_away
+
+	/// Pontos marcados pelo time na partida.
+	column 'Pontos feitos'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: points_for
+
+	/// Pontos do adversário na partida.
+	column 'Pontos sofridos'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: points_against
+
+	/// Resultado do time na partida.
+	column Resultado
+		dataType: string
+		summarizeBy: none
+		sourceColumn: result
+
+	/// Arremessos de quadra convertidos.
+	column 'Arremessos convertidos'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: field_goals_made
+
+	/// Arremessos de quadra tentados.
+	column 'Arremessos tentados'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: field_goals_attempted
+
+	/// Arremessos de três pontos convertidos.
+	column 'Bolas de três convertidas'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: three_point_field_goals_made
+
+	/// Arremessos de três pontos tentados.
+	column 'Bolas de três tentadas'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: three_point_field_goals_attempted
+
+	/// Lances livres convertidos.
+	column 'Lances livres convertidos'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: free_throws_made
+
+	/// Lances livres tentados.
+	column 'Lances livres tentados'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: free_throws_attempted
+
+	/// Rebotes do time.
+	column Rebotes
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: rebounds
+
+	/// Assistências do time.
+	column Assistências
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: assists
+
+	/// Roubos de bola do time.
+	column Roubos
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: steals
+
+	/// Tocos do time.
+	column Tocos
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: blocks
+
+	/// Perdas de bola do time.
+	column 'Perdas de bola'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: turnovers
+
+	/// Pontos marcados no garrafão.
+	column 'Pontos no garrafão'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: points_in_paint
+
+	/// Pontos em contra-ataque.
+	column 'Pontos em contra-ataque'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: fast_break_points
+
+	partition 'Estatísticas de Times' = entity
+		mode: directLake
+		source
+			entityName: gold_espn_team_boxscores
+			expressionSource: 'DirectLake NBA'
+

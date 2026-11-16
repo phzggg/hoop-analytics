@@ -1,0 +1,20 @@
+relationship 'Jogadores por Id'
+	fromColumn: Participações.'Jogador Id'
+	toColumn: Jogadores.'Jogador Id'
+
+relationship 'Partidas por Data'
+	fromColumn: Partidas.Data
+	toColumn: Calendário.Data
+
+relationship 'Participações por Partida'
+	fromColumn: Participações.'Jogo Id'
+	toColumn: Partidas.'Jogo Id'
+
+relationship 'Times por Partida'
+	fromColumn: 'Estatísticas de Times'.'Jogo Id'
+	toColumn: Partidas.'Jogo Id'
+
+relationship 'Períodos por Partida'
+	fromColumn: Períodos.'Jogo Id'
+	toColumn: Partidas.'Jogo Id'
+

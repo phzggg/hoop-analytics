@@ -1,0 +1,187 @@
+/// Uma linha por jogador e jogo finalizado nos box scores coletados.
+table Participações
+	lineageTag: 1aa86b60-ed00-4341-8202-f155658a2c78
+
+	/// Quantidade de partidas em que o jogador entrou em quadra.
+	measure 'Jogos disputados' = COUNTROWS('Participações')
+		formatString: #,##0
+		lineageTag: feed2461-4135-4ee7-9422-6020cb89fade
+
+	/// Pontos somados nos jogos selecionados.
+	measure 'Pontos totais' = SUM('Participações'[Pontos brutos])
+		formatString: #,##0
+		lineageTag: 559885d0-19f8-49c3-94ef-175187278452
+
+	/// Média de pontos por partida disputada no período selecionado.
+	measure 'Pontos por jogo' = AVERAGE('Participações'[Pontos brutos])
+		formatString: 0.00
+		lineageTag: 9579322e-24c5-4884-b019-292585895e8d
+
+	/// Média de rebotes por partida disputada no período selecionado.
+	measure 'Rebotes por jogo' = AVERAGE('Participações'[Rebotes brutos])
+		formatString: 0.00
+		lineageTag: 1afd1263-52a6-4a40-90dd-dc046db9df29
+
+	/// Média de assistências por partida disputada no período selecionado.
+	measure 'Assistências por jogo' = AVERAGE('Participações'[Assistências brutas])
+		formatString: 0.00
+		lineageTag: c203eda8-01a1-4fd3-a96c-4f5c2e16895f
+
+	/// Média de minutos nos jogos coletados; precisão conforme publicada pela ESPN.
+	measure 'Minutos por jogo' = AVERAGE('Participações'[Minutos brutos])
+		formatString: 0.00
+		lineageTag: 70d27589-015b-47b0-9929-cebe74b287a4
+
+	column 'Jogo Id'
+		dataType: string
+		isHidden
+		lineageTag: 477c12ce-da38-4b85-8092-a84700d53044
+		summarizeBy: none
+		sourceColumn: game_id
+
+	column 'Jogador Id'
+		dataType: string
+		isHidden
+		lineageTag: 127310c6-e55e-4158-852d-b44cb7e2c32c
+		summarizeBy: none
+		sourceColumn: player_id
+
+	column 'Data do jogo'
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		lineageTag: 416ee120-c896-4437-b57e-b4f451d21991
+		summarizeBy: none
+		sourceColumn: game_date
+
+	/// Time do jogador naquela partida.
+	column Time
+		dataType: string
+		lineageTag: dc32bd15-fed4-414c-8837-0c0b98f91d3e
+		summarizeBy: none
+		sourceColumn: team_name
+
+	column 'Pontos brutos'
+		dataType: int64
+		isHidden
+		lineageTag: 77232d77-2508-439e-aff3-d299ff5b8903
+		summarizeBy: none
+		sourceColumn: points
+
+	column 'Rebotes brutos'
+		dataType: int64
+		isHidden
+		lineageTag: 3728301a-5757-416c-a8e1-179504dc3d7f
+		summarizeBy: none
+		sourceColumn: rebounds
+
+	column 'Assistências brutas'
+		dataType: int64
+		isHidden
+		lineageTag: a9ccf5ef-4a56-4c19-b4c5-4fedd1f86914
+		summarizeBy: none
+		sourceColumn: assists
+
+	column 'Minutos brutos'
+		dataType: double
+		isHidden
+		lineageTag: 944a374e-3946-4cb1-b7ba-fa8503c0b55e
+		summarizeBy: none
+		sourceColumn: minutes
+
+	/// Identificador ESPN do time do jogador na partida.
+	column 'Time Id'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: team_id
+
+	/// Temporada da partida.
+	column Temporada
+		dataType: string
+		summarizeBy: none
+		sourceColumn: season_name
+
+	/// Fase da temporada.
+	column Fase
+		dataType: string
+		summarizeBy: none
+		sourceColumn: season_type
+
+	/// Indica se o jogador começou a partida.
+	column Titular
+		dataType: boolean
+		summarizeBy: none
+		sourceColumn: is_starter
+
+	/// Arremessos de quadra convertidos pelo jogador.
+	column 'Arremessos convertidos'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: field_goals_made
+
+	/// Arremessos de quadra tentados pelo jogador.
+	column 'Arremessos tentados'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: field_goals_attempted
+
+	/// Arremessos de três pontos convertidos pelo jogador.
+	column 'Bolas de três convertidas'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: three_point_field_goals_made
+
+	/// Arremessos de três pontos tentados pelo jogador.
+	column 'Bolas de três tentadas'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: three_point_field_goals_attempted
+
+	/// Lances livres convertidos pelo jogador.
+	column 'Lances livres convertidos'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: free_throws_made
+
+	/// Lances livres tentados pelo jogador.
+	column 'Lances livres tentados'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: free_throws_attempted
+
+	/// Roubos de bola do jogador.
+	column Roubos
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: steals
+
+	/// Tocos do jogador.
+	column Tocos
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: blocks
+
+	/// Perdas de bola do jogador.
+	column 'Perdas de bola'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: turnovers
+
+	/// Faltas pessoais do jogador.
+	column Faltas
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: personal_fouls
+
+	/// Diferença de pontos com o jogador em quadra, conforme a ESPN.
+	column 'Mais menos'
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: plus_minus
+
+	partition Participações = entity
+		mode: directLake
+		source
+			entityName: gold_espn_player_games
+			expressionSource: 'DirectLake NBA'
+

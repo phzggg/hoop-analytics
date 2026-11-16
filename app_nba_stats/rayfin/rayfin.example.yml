@@ -1,0 +1,43 @@
+id: app-nba-stats
+name: app_nba_stats
+version: 1.0.11
+services:
+  auth:
+    enabled: true
+    customClaims:
+      app_version: 1.0.0
+    scopes:
+      - read:data
+      - write:data
+    password:
+      enabled: false
+    allowedRedirectUris:
+      - http://localhost:5173
+      - http://127.0.0.1:5173
+      - https://YOUR_APP_HOST
+    fabric:
+      enabled: true
+  data:
+    enabled: true
+    dialect: mssql
+  staticHosting:
+    enabled: true
+    folder: dist
+    buildCommand: npm run build
+    indexDocument: index.html
+    assetAccess: public
+  storage:
+    enabled: false
+  functions:
+    enabled: false
+connectors:
+  - name: nba
+    type: fabric-semanticmodel
+    config:
+      workspaceId: YOUR_WORKSPACE_ID
+      itemId: YOUR_SEMANTIC_MODEL_ID
+    auth:
+      type: delegated
+    version: "1"
+    operations:
+      - name: executeQuery

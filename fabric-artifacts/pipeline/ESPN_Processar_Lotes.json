@@ -1,0 +1,291 @@
+{
+    "properties":  {
+                       "description":  "Processa lotes ESPN ja enviados ao OneLake. Nao faz coleta externa nem tem agendamento.",
+                       "activities":  [
+                                          {
+                                              "name":  "17_ESPN_Coleta_Automatica",
+                                              "type":  "TridentNotebook",
+                                              "dependsOn":  [
+
+                                                            ],
+                                              "policy":  {
+                                                             "timeout":  "0.02:00:00",
+                                                             "retry":  2,
+                                                             "retryIntervalInSeconds":  120,
+                                                             "secureOutput":  false,
+                                                             "secureInput":  false
+                                                         },
+                                              "typeProperties":  {
+                                                                     "notebookId":  "\u003cNOTEBOOK_ID:17_ESPN_Coleta_Automatica\u003e",
+                                                                     "workspaceId":  "\u003cWORKSPACE_ID\u003e"
+                                                                 }
+                                          },
+                                          {
+                                              "name":  "Espera_Coleta",
+                                              "type":  "Wait",
+                                              "dependsOn":  [
+                                                                {
+                                                                    "activity":  "17_ESPN_Coleta_Automatica",
+                                                                    "dependencyConditions":  [
+                                                                                                 "Succeeded"
+                                                                                             ]
+                                                                }
+                                                            ],
+                                              "typeProperties":  {
+                                                                     "waitTimeInSeconds":  60
+                                                                 }
+                                          },
+                                          {
+                                              "name":  "11_ESPN_Bronze",
+                                              "type":  "TridentNotebook",
+                                              "dependsOn":  [
+                                                                {
+                                                                    "activity":  "Espera_Coleta",
+                                                                    "dependencyConditions":  [
+                                                                                                 "Succeeded"
+                                                                                             ]
+                                                                }
+                                                            ],
+                                              "policy":  {
+                                                             "timeout":  "0.02:00:00",
+                                                             "retry":  2,
+                                                             "retryIntervalInSeconds":  120,
+                                                             "secureOutput":  false,
+                                                             "secureInput":  false
+                                                         },
+                                              "typeProperties":  {
+                                                                     "notebookId":  "\u003cNOTEBOOK_ID:11_ESPN_Bronze\u003e",
+                                                                     "workspaceId":  "\u003cWORKSPACE_ID\u003e"
+                                                                 }
+                                          },
+                                          {
+                                              "name":  "Espera_1",
+                                              "type":  "Wait",
+                                              "dependsOn":  [
+                                                                {
+                                                                    "activity":  "11_ESPN_Bronze",
+                                                                    "dependencyConditions":  [
+                                                                                                 "Succeeded"
+                                                                                             ]
+                                                                }
+                                                            ],
+                                              "typeProperties":  {
+                                                                     "waitTimeInSeconds":  60
+                                                                 }
+                                          },
+                                          {
+                                              "name":  "12_ESPN_Silver",
+                                              "type":  "TridentNotebook",
+                                              "dependsOn":  [
+                                                                {
+                                                                    "activity":  "Espera_1",
+                                                                    "dependencyConditions":  [
+                                                                                                 "Succeeded"
+                                                                                             ]
+                                                                }
+                                                            ],
+                                              "policy":  {
+                                                             "timeout":  "0.02:00:00",
+                                                             "retry":  2,
+                                                             "retryIntervalInSeconds":  120,
+                                                             "secureOutput":  false,
+                                                             "secureInput":  false
+                                                         },
+                                              "typeProperties":  {
+                                                                     "notebookId":  "\u003cNOTEBOOK_ID:12_ESPN_Silver\u003e",
+                                                                     "workspaceId":  "\u003cWORKSPACE_ID\u003e"
+                                                                 }
+                                          },
+                                          {
+                                              "name":  "Espera_2",
+                                              "type":  "Wait",
+                                              "dependsOn":  [
+                                                                {
+                                                                    "activity":  "12_ESPN_Silver",
+                                                                    "dependencyConditions":  [
+                                                                                                 "Succeeded"
+                                                                                             ]
+                                                                }
+                                                            ],
+                                              "typeProperties":  {
+                                                                     "waitTimeInSeconds":  60
+                                                                 }
+                                          },
+                                          {
+                                              "name":  "13_ESPN_Gold",
+                                              "type":  "TridentNotebook",
+                                              "dependsOn":  [
+                                                                {
+                                                                    "activity":  "Espera_2",
+                                                                    "dependencyConditions":  [
+                                                                                                 "Succeeded"
+                                                                                             ]
+                                                                }
+                                                            ],
+                                              "policy":  {
+                                                             "timeout":  "0.02:00:00",
+                                                             "retry":  2,
+                                                             "retryIntervalInSeconds":  120,
+                                                             "secureOutput":  false,
+                                                             "secureInput":  false
+                                                         },
+                                              "typeProperties":  {
+                                                                     "notebookId":  "\u003cNOTEBOOK_ID:13_ESPN_Gold\u003e",
+                                                                     "workspaceId":  "\u003cWORKSPACE_ID\u003e"
+                                                                 }
+                                          },
+                                          {
+                                              "name":  "Espera_3",
+                                              "type":  "Wait",
+                                              "dependsOn":  [
+                                                                {
+                                                                    "activity":  "13_ESPN_Gold",
+                                                                    "dependencyConditions":  [
+                                                                                                 "Succeeded"
+                                                                                             ]
+                                                                }
+                                                            ],
+                                              "typeProperties":  {
+                                                                     "waitTimeInSeconds":  60
+                                                                 }
+                                          },
+                                          {
+                                              "name":  "14_ESPN_Players_Bronze",
+                                              "type":  "TridentNotebook",
+                                              "dependsOn":  [
+                                                                {
+                                                                    "activity":  "Espera_3",
+                                                                    "dependencyConditions":  [
+                                                                                                 "Succeeded"
+                                                                                             ]
+                                                                }
+                                                            ],
+                                              "policy":  {
+                                                             "timeout":  "0.02:00:00",
+                                                             "retry":  2,
+                                                             "retryIntervalInSeconds":  120,
+                                                             "secureOutput":  false,
+                                                             "secureInput":  false
+                                                         },
+                                              "typeProperties":  {
+                                                                     "notebookId":  "\u003cNOTEBOOK_ID:14_ESPN_Players_Bronze\u003e",
+                                                                     "workspaceId":  "\u003cWORKSPACE_ID\u003e"
+                                                                 }
+                                          },
+                                          {
+                                              "name":  "Espera_4",
+                                              "type":  "Wait",
+                                              "dependsOn":  [
+                                                                {
+                                                                    "activity":  "14_ESPN_Players_Bronze",
+                                                                    "dependencyConditions":  [
+                                                                                                 "Succeeded"
+                                                                                             ]
+                                                                }
+                                                            ],
+                                              "typeProperties":  {
+                                                                     "waitTimeInSeconds":  60
+                                                                 }
+                                          },
+                                          {
+                                              "name":  "15_ESPN_Players_Silver",
+                                              "type":  "TridentNotebook",
+                                              "dependsOn":  [
+                                                                {
+                                                                    "activity":  "Espera_4",
+                                                                    "dependencyConditions":  [
+                                                                                                 "Succeeded"
+                                                                                             ]
+                                                                }
+                                                            ],
+                                              "policy":  {
+                                                             "timeout":  "0.02:00:00",
+                                                             "retry":  2,
+                                                             "retryIntervalInSeconds":  120,
+                                                             "secureOutput":  false,
+                                                             "secureInput":  false
+                                                         },
+                                              "typeProperties":  {
+                                                                     "notebookId":  "\u003cNOTEBOOK_ID:15_ESPN_Players_Silver\u003e",
+                                                                     "workspaceId":  "\u003cWORKSPACE_ID\u003e"
+                                                                 }
+                                          },
+                                          {
+                                              "name":  "Espera_5",
+                                              "type":  "Wait",
+                                              "dependsOn":  [
+                                                                {
+                                                                    "activity":  "15_ESPN_Players_Silver",
+                                                                    "dependencyConditions":  [
+                                                                                                 "Succeeded"
+                                                                                             ]
+                                                                }
+                                                            ],
+                                              "typeProperties":  {
+                                                                     "waitTimeInSeconds":  60
+                                                                 }
+                                          },
+                                          {
+                                              "name":  "16_ESPN_Players_Gold",
+                                              "type":  "TridentNotebook",
+                                              "dependsOn":  [
+                                                                {
+                                                                    "activity":  "Espera_5",
+                                                                    "dependencyConditions":  [
+                                                                                                 "Succeeded"
+                                                                                             ]
+                                                                }
+                                                            ],
+                                              "policy":  {
+                                                             "timeout":  "0.02:00:00",
+                                                             "retry":  2,
+                                                             "retryIntervalInSeconds":  120,
+                                                             "secureOutput":  false,
+                                                             "secureInput":  false
+                                                         },
+                                              "typeProperties":  {
+                                                                     "notebookId":  "\u003cNOTEBOOK_ID:16_ESPN_Players_Gold\u003e",
+                                                                     "workspaceId":  "\u003cWORKSPACE_ID\u003e"
+                                                                 }
+                                          },
+                                          {
+                                              "name":  "Hoop_Public_Publish",
+                                              "type":  "TridentNotebook",
+                                              "dependsOn":  [
+                                                                {
+                                                                    "activity":  "Espera_Publicacao",
+                                                                    "dependencyConditions":  [
+                                                                                                 "Succeeded"
+                                                                                             ]
+                                                                }
+                                                            ],
+                                              "policy":  {
+                                                             "retryIntervalInSeconds":  120,
+                                                             "secureInput":  false,
+                                                             "retry":  2,
+                                                             "timeout":  "0.00:30:00",
+                                                             "secureOutput":  false
+                                                         },
+                                              "typeProperties":  {
+                                                                     "workspaceId":  "\u003cWORKSPACE_ID\u003e",
+                                                                     "notebookId":  "\u003cNOTEBOOK_ID:Hoop_Public_Publish\u003e"
+                                                                 }
+                                          },
+                                          {
+                                              "name":  "Espera_Publicacao",
+                                              "type":  "Wait",
+                                              "dependsOn":  [
+                                                                {
+                                                                    "activity":  "16_ESPN_Players_Gold",
+                                                                    "dependencyConditions":  [
+                                                                                                 "Succeeded"
+                                                                                             ]
+                                                                }
+                                                            ],
+                                              "typeProperties":  {
+                                                                     "waitTimeInSeconds":  60
+                                                                 }
+                                          }
+                                      ]
+                   }
+}
