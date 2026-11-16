@@ -7,7 +7,7 @@ from unittest.mock import Mock, patch
 import requests
 
 
-path = Path(__file__).resolve().parents[1] / "notebooks" / "17_ESPN_Coleta_Automatica.py"
+path = Path(__file__).resolve().parents[1] / "notebooks" / "17_ESPN_Automatic_Collection.py"
 spec = importlib.util.spec_from_file_location("espn_fabric_collection", path)
 collector = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(collector)

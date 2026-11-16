@@ -1,4 +1,4 @@
-# Fabric Notebook Code: 17_ESPN_Coleta_Automatica
+# Fabric Notebook Code: 17_ESPN_Automatic_Collection
 """Collect ESPN scoreboards and completed player box scores in OneLake."""
 
 import json

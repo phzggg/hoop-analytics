@@ -15,9 +15,9 @@ annotation __PBI_ServiceStoredInTmdl = reserved
 annotation __LastRPTime = 134392832817649446
 
 ref table Jogadores
-ref table Participações
-ref table Calendário
+ref table Participations
+ref table Calendar
 ref table Partidas
-ref table 'Estatísticas de Times'
-ref table Períodos
+ref table Team_Statistics
+ref table Periods
 
