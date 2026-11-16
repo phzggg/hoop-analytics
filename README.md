@@ -13,11 +13,16 @@
 </p>
 
 <p align="center">
-  <a href="https://vast-aspen-e38fa96203-brazilsouth.webapp.fabricapps.net/">Explore the app</a> ·
   <a href="#features">Features</a> ·
   <a href="#architecture">Architecture</a> ·
   <a href="#getting-started">Getting Started</a> ·
   <a href="#documentation">Documentation</a>
+</p>
+
+<p align="center">
+  <a href="https://vast-aspen-e38fa96203-brazilsouth.webapp.fabricapps.net/">
+    <img src="https://img.shields.io/badge/OPEN%20THE%20APP-1D428A?style=for-the-badge" alt="Open the HoopMetrics app">
+  </a>
 </p>
 
 ---
@@ -82,9 +87,6 @@ See [Architecture](./docs/architecture.md) and
 | [config](./config/) | Configuration templates |
 | [docs](./docs/) | Architecture, implementation and product documentation |
 
-Earlier prototypes and historical notes are also preserved in the workspace;
-the current ESPN-based flow is documented in the links above.
-
 ## Getting Started
 
 To explore or adapt the solution, you need a Microsoft Fabric workspace and
@@ -124,8 +126,8 @@ are not a validated one-click deployment.
 
 HoopMetrics is not affiliated with the NBA or ESPN. Source availability and
 coverage depend on ESPN, and its endpoints may change. Data, logos, photos
-and other third-party content have separate usage rights. No project-wide
-Project-owned source is provided under the [MIT License](./LICENSE); existing
+and other third-party content have separate usage rights. Project-owned source
+is provided under the [MIT License](./LICENSE); existing
 third-party components retain their own licenses. Consult
 [Security and Rights](./docs/security-and-rights.md) before redistributing
 third-party data or content.

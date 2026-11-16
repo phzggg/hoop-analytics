@@ -2,8 +2,7 @@
 
 Thank you for helping improve HoopMetrics. Before proposing a change, check the
 [architecture](docs/architecture.md) and [implementation guide](docs/implementation-guide.md)
-to understand the active ESPN pipeline and Fabric App. Historical prototypes
-are kept for reference and do not represent the deployed data flow.
+to understand the ESPN pipeline and Fabric App.
 
 Keep changes focused, explain any behavior or configuration changes, and
 include tests for new or corrected behavior. Do not deploy to another

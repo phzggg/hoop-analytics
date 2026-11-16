@@ -5,7 +5,7 @@ no workspace **YOUR_WORKSPACE**. A versão pública usa uma cópia apenas
 dos campos esportivos necessários, sem exigir acesso ao modelo semântico.
 O caminho de desenvolvimento autenticado usa acesso delegado ao modelo.
 
-## Primeira entrega
+## Funcionalidades
 
 - A temporada mais recente disponível é selecionada automaticamente, sem
   filtro de temporada. Quando houver mais de uma fase, a fase pode ser alterada

@@ -33,3 +33,12 @@ data/sample/
 **/public/nba-snapshot.json
 app_nba_stats/publisher.ipynb
 **/.agents/
+
+# Earlier prototypes kept locally, outside the active project
+/nba-fabric-app/
+/notebooks/01_Ingestion_Setup_Bronze.py
+/notebooks/02_Transformation_Silver_Layer.py
+/notebooks/03_Dimensional_Model_Gold_Layer.py
+/notebooks/Utilities_init_session.py
+/src/ingestion/explore_nba_api.py
+/src/ingestion/explore_nba_api_v2.py

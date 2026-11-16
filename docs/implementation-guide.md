@@ -63,11 +63,8 @@ snapshot is an alternative development path described in the
 without confirming rights. Local build success does not prove Fabric
 permissions, source access, end-to-end deployment or scheduling.
 
-The historical `reorganize_notebooks.py` requires `--workspace-id`; it targets
-the earlier notebook set, not the active ESPN pipeline. The manual ESPN
-ingestion scripts and historical Python deployment script require
-`--workspace`; the PowerShell deployment and reorganization scripts require
-`-WorkspaceName`. These parameters avoid embedding a workspace identifier.
+The optional manual ESPN ingestion scripts require `--workspace`, avoiding an
+embedded workspace identifier.
 
 ## Troubleshooting
 
