@@ -1,9 +1,10 @@
 # Semantic model
 
-The [TMDL export](../fabric/semantic-model/definition/) is an English-language
-migration prepared from the production model. It has not yet been deployed:
-production still uses the Portuguese names. Workspace, lakehouse and model IDs
-are placeholders. It is a definition export, not a complete PBIP project.
+The [TMDL export](../fabric/semantic-model/definition/) describes the
+English-language production model. Workspace, lakehouse and model IDs are
+placeholders. It is a definition export, not a complete PBIP project.
+The calendar's internal Power Query source names remain unchanged to preserve
+its existing data bindings; the model's visible names are in English.
 
 | Table | Storage | Purpose |
 | --- | --- | --- |

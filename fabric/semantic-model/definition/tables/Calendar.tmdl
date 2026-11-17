@@ -10,30 +10,30 @@ table Calendar
 		formatString: dd/MM/yyyy
 		lineageTag: b0ef52fd-9b76-47a6-88d9-f03368dc0cfc
 		summarizeBy: none
-		sourceColumn: Date
+		sourceColumn: Data
 
 	/// Year of the match.
 	column Year
 		dataType: int64
 		lineageTag: bd84093f-fdab-4cf3-a974-45657285ea93
 		summarizeBy: none
-		sourceColumn: Year
+		sourceColumn: Ano
 
 	/// Month number of the match.
 	column Month
 		dataType: int64
 		lineageTag: e6ac403e-e7a2-4ca3-9fff-054c65f89b98
 		summarizeBy: none
-		sourceColumn: Month
+		sourceColumn: Mês
 
 	/// Day of the month of the match.
 	column Day
 		dataType: int64
 		lineageTag: 53d3e990-e7f9-40e7-a1b6-2fcd05c7ab57
 		summarizeBy: none
-		sourceColumn: Day
+		sourceColumn: Dia
 
 	partition Calendar = m
 		mode: import
-		source = let Start = #date(1946, 11, 1), End = #date(Date.Year(DateTime.Date(DateTimeZone.FixedUtcNow())) + 1, 12, 31), Dates = List.Dates(Start, Duration.Days(End - Start) + 1, #duration(1, 0, 0, 0)), DateTable = Table.FromList(Dates, Splitter.SplitByNothing(), {"Date"}), Types = Table.TransformColumnTypes(DateTable, {{"Date", type date}}), Year = Table.AddColumn(Types, "Year", each Date.Year([Date]), Int64.Type), Month = Table.AddColumn(Year, "Month", each Date.Month([Date]), Int64.Type), Day = Table.AddColumn(Month, "Day", each Date.Day([Date]), Int64.Type) in Day
+		source = let Inicio = #date(1946, 11, 1), Fim = #date(Date.Year(DateTime.Date(DateTimeZone.FixedUtcNow())) + 1, 12, 31), Datas = List.Dates(Inicio, Duration.Days(Fim - Inicio) + 1, #duration(1, 0, 0, 0)), Tabela = Table.FromList(Datas, Splitter.SplitByNothing(), {"Data"}), Tipos = Table.TransformColumnTypes(Tabela, {{"Data", type date}}), Ano = Table.AddColumn(Tipos, "Ano", each Date.Year([Data]), Int64.Type), Mes = Table.AddColumn(Ano, "Mês", each Date.Month([Data]), Int64.Type), Dia = Table.AddColumn(Mes, "Dia", each Date.Day([Data]), Int64.Type) in Dia
 

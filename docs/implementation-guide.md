@@ -25,16 +25,13 @@ licensing and capacity costs depend on your environment.
    Notebook 16 looks up the model by the name `NBA Player Analysis`; adapt
    the code or use that name and ensure it is unique.
 
-The English model and its consumers are a staged migration, not yet deployed to
-production. Coordinate the model rename with the deployed notebook 16, the
-generated public publisher, and any direct-query app or external reports.
-Until the model is migrated, the updated model queries and refresh lookup will
-not work against the existing Portuguese model. Keep the existing snapshot v1
+The production model uses English object names. Keep the existing snapshot v1
 field keys when regenerating the publisher so deployed snapshot readers remain
-compatible. Rename objects in the current live model while preserving its
-identity, lineage and connections; do not overwrite it with this sanitized,
-potentially stale export. Back up the current definition and validate queries,
-refresh and publication after cutover.
+compatible. For future changes, coordinate the model with notebook 16, the
+public publisher, and any direct-query app or external reports. Preserve the
+live model's identity, lineage and connections; do not overwrite it with this
+sanitized, potentially stale export. Back up the current definition and
+validate queries, refresh and publication after any changes.
 
 ## App and orchestration
 
