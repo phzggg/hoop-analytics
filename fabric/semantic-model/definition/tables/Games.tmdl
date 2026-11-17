@@ -1,99 +1,99 @@
 /// One row per match, including scheduled and finished games.
-table Partidas
+table Games
 
 	/// ESPN match identifier.
-	column 'Jogo Id'
+	column 'Game Id'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: game_id
 
 	/// Match date.
-	column Data
+	column Date
 		dataType: dateTime
 		summarizeBy: none
 		sourceColumn: game_date
 
 	/// Season provided by ESPN.
-	column Temporada
+	column Season
 		dataType: string
 		summarizeBy: none
 		sourceColumn: season_name
 
 	/// Season phase provided by ESPN.
-	column Fase
+	column 'Season Phase'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: season_type
 
 	/// ESPN home team identifier.
-	column 'Mandante Id'
+	column 'Home Team Id'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: home_team_id
 
 	/// Home team.
-	column Mandante
+	column 'Home Team'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: home_team
 
 	/// Home team abbreviation.
-	column 'Sigla mandante'
+	column 'Home Team Abbreviation'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: home_team_abbreviation
 
 	/// Home team logo URL.
-	column 'Logo mandante'
+	column 'Home Team Logo'
 		dataType: string
 		dataCategory: ImageUrl
 		summarizeBy: none
 		sourceColumn: home_team_logo
 
 	/// ESPN away team identifier.
-	column 'Visitante Id'
+	column 'Away Team Id'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: away_team_id
 
 	/// Away team.
-	column Visitante
+	column 'Away Team'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: away_team
 
 	/// Away team abbreviation.
-	column 'Sigla visitante'
+	column 'Away Team Abbreviation'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: away_team_abbreviation
 
 	/// Away team logo URL.
-	column 'Logo visitante'
+	column 'Away Team Logo'
 		dataType: string
 		dataCategory: ImageUrl
 		summarizeBy: none
 		sourceColumn: away_team_logo
 
 	/// Home team score; empty when unavailable.
-	column 'Pontos mandante'
+	column 'Home Score'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: home_score
 
 	/// Away team score; empty when unavailable.
-	column 'Pontos visitante'
+	column 'Away Score'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: away_score
 
 	/// Match status published by ESPN.
-	column Situação
+	column Status
 		dataType: string
 		summarizeBy: none
 		sourceColumn: status
 
-	partition Partidas = entity
+	partition Games = entity
 		mode: directLake
 		source
 			entityName: gold_espn_games

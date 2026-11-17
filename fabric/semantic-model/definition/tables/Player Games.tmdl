@@ -1,52 +1,52 @@
 /// One row per player and finished game in collected box scores.
-table Participações
+table 'Player Games'
 	lineageTag: 1aa86b60-ed00-4341-8202-f155658a2c78
 
 	/// Number of matches the player appeared in.
-	measure 'Jogos disputados' = COUNTROWS('Participações')
+	measure 'Games Played' = COUNTROWS('Player Games')
 		formatString: #,##0
 		lineageTag: feed2461-4135-4ee7-9422-6020cb89fade
 
 	/// Total points scored in selected games.
-	measure 'Pontos totais' = SUM('Participações'[Pontos brutos])
+	measure 'Total Points' = SUM('Player Games'[Raw Points])
 		formatString: #,##0
 		lineageTag: 559885d0-19f8-49c3-94ef-175187278452
 
 	/// Average points per match played in selected period.
-	measure 'Pontos por jogo' = AVERAGE('Participações'[Pontos brutos])
+	measure 'Points per Game' = AVERAGE('Player Games'[Raw Points])
 		formatString: 0.00
 		lineageTag: 9579322e-24c5-4884-b019-292585895e8d
 
 	/// Average rebounds per match played in selected period.
-	measure 'Rebotes por jogo' = AVERAGE('Participações'[Rebotes brutos])
+	measure 'Rebounds per Game' = AVERAGE('Player Games'[Raw Rebounds])
 		formatString: 0.00
 		lineageTag: 1afd1263-52a6-4a40-90dd-dc046db9df29
 
 	/// Average assists per match played in selected period.
-	measure 'Assistências por jogo' = AVERAGE('Participações'[Assistências brutas])
+	measure 'Assists per Game' = AVERAGE('Player Games'[Raw Assists])
 		formatString: 0.00
 		lineageTag: c203eda8-01a1-4fd3-a96c-4f5c2e16895f
 
 	/// Average minutes in collected games; precision as published by ESPN.
-	measure 'Minutos por jogo' = AVERAGE('Participações'[Minutos brutos])
+	measure 'Minutes per Game' = AVERAGE('Player Games'[Raw Minutes])
 		formatString: 0.00
 		lineageTag: 70d27589-015b-47b0-9929-cebe74b287a4
 
-	column 'Jogo Id'
+	column 'Game Id'
 		dataType: string
 		isHidden
 		lineageTag: 477c12ce-da38-4b85-8092-a84700d53044
 		summarizeBy: none
 		sourceColumn: game_id
 
-	column 'Jogador Id'
+	column 'Player Id'
 		dataType: string
 		isHidden
 		lineageTag: 127310c6-e55e-4158-852d-b44cb7e2c32c
 		summarizeBy: none
 		sourceColumn: player_id
 
-	column 'Data do jogo'
+	column 'Game Date'
 		dataType: dateTime
 		isHidden
 		formatString: dd/MM/yyyy
@@ -55,34 +55,34 @@ table Participações
 		sourceColumn: game_date
 
 	/// Player's team in that match.
-	column Time
+	column Team
 		dataType: string
 		lineageTag: dc32bd15-fed4-414c-8837-0c0b98f91d3e
 		summarizeBy: none
 		sourceColumn: team_name
 
-	column 'Pontos brutos'
+	column 'Raw Points'
 		dataType: int64
 		isHidden
 		lineageTag: 77232d77-2508-439e-aff3-d299ff5b8903
 		summarizeBy: none
 		sourceColumn: points
 
-	column 'Rebotes brutos'
+	column 'Raw Rebounds'
 		dataType: int64
 		isHidden
 		lineageTag: 3728301a-5757-416c-a8e1-179504dc3d7f
 		summarizeBy: none
 		sourceColumn: rebounds
 
-	column 'Assistências brutas'
+	column 'Raw Assists'
 		dataType: int64
 		isHidden
 		lineageTag: a9ccf5ef-4a56-4c19-b4c5-4fedd1f86914
 		summarizeBy: none
 		sourceColumn: assists
 
-	column 'Minutos brutos'
+	column 'Raw Minutes'
 		dataType: double
 		isHidden
 		lineageTag: 944a374e-3946-4cb1-b7ba-fa8503c0b55e
@@ -90,96 +90,96 @@ table Participações
 		sourceColumn: minutes
 
 	/// ESPN team identifier of player in the match.
-	column 'Time Id'
+	column 'Team Id'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: team_id
 
 	/// Match season.
-	column Temporada
+	column Season
 		dataType: string
 		summarizeBy: none
 		sourceColumn: season_name
 
 	/// Season phase.
-	column Fase
+	column 'Season Phase'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: season_type
 
 	/// Indicates if the player started the match.
-	column Titular
+	column Starter
 		dataType: boolean
 		summarizeBy: none
 		sourceColumn: is_starter
 
 	/// Field goals made by the player.
-	column 'Arremessos convertidos'
+	column 'Field Goals Made'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: field_goals_made
 
 	/// Field goals attempted by the player.
-	column 'Arremessos tentados'
+	column 'Field Goals Attempted'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: field_goals_attempted
 
 	/// Three-point field goals made by the player.
-	column 'Bolas de três convertidas'
+	column 'Three Pointers Made'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: three_point_field_goals_made
 
 	/// Three-point field goals attempted by the player.
-	column 'Bolas de três tentadas'
+	column 'Three Pointers Attempted'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: three_point_field_goals_attempted
 
 	/// Free throws made by the player.
-	column 'Lances livres convertidos'
+	column 'Free Throws Made'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: free_throws_made
 
 	/// Free throws attempted by the player.
-	column 'Lances livres tentados'
+	column 'Free Throws Attempted'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: free_throws_attempted
 
 	/// Player steals.
-	column Roubos
+	column Steals
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: steals
 
 	/// Player blocks.
-	column Tocos
+	column Blocks
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: blocks
 
 	/// Player turnovers.
-	column 'Perdas de bola'
+	column Turnovers
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: turnovers
 
 	/// Player personal fouls.
-	column Faltas
+	column Fouls
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: personal_fouls
 
 	/// Point differential with player on court, according to ESPN.
-	column 'Mais menos'
+	column 'Plus Minus'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: plus_minus
 
-	partition Participações = entity
+	partition 'Player Games' = entity
 		mode: directLake
 		source
 			entityName: gold_espn_player_games

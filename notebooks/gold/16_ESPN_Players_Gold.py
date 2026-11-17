@@ -155,10 +155,10 @@ def refresh_semantic_model():
         response = session.get(url, headers=headers, timeout=(10, 30))
         response.raise_for_status()
         payload = response.json()
-        models.extend(model for model in payload["value"] if model["name"] == "NBA Analise Jogadores")
+        models.extend(model for model in payload["value"] if model["name"] == "NBA Player Analysis")
         url = payload.get("@odata.nextLink")
     if len(models) != 1:
-        raise ValueError(f"Esperado um modelo NBA Analise Jogadores; encontrados {len(models)}.")
+        raise ValueError(f"Esperado um modelo NBA Player Analysis; encontrados {len(models)}.")
 
     refresh_url = f"{base}/datasets/{models[0]['id']}/refreshes"
     response = session.post(

@@ -1,5 +1,5 @@
 /// NBA player performance by game, based on public ESPN data.
-database 'NBA Analise Jogadores'
+database 'NBA Player Analysis'
 	id: <SEMANTIC_MODEL_ID>
 	compatibilityLevel: 1702
 	compatibilityMode: powerBI

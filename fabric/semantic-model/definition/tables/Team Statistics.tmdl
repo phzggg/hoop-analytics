@@ -1,140 +1,140 @@
 /// One row per team and finished game with collected box score.
-table 'Estatísticas de Times'
+table 'Team Statistics'
 
 	/// ESPN match identifier.
-	column 'Jogo Id'
+	column 'Game Id'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: game_id
 
 	/// ESPN team identifier.
-	column 'Time Id'
+	column 'Team Id'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: team_id
 
 	/// Team in the match box score.
-	column Time
+	column Team
 		dataType: string
 		summarizeBy: none
 		sourceColumn: team_name
 
 	/// Team abbreviation.
-	column Sigla
+	column 'Team Abbreviation'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: team_abbreviation
 
 	/// Team logo URL.
-	column Logo
+	column 'Team Logo'
 		dataType: string
 		dataCategory: ImageUrl
 		summarizeBy: none
 		sourceColumn: team_logo
 
 	/// Indicates if the team played home or away.
-	column 'Casa ou fora'
+	column 'Home or Away'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: home_away
 
 	/// Points scored by team in the match.
-	column 'Pontos feitos'
+	column 'Points For'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: points_for
 
 	/// Opponent points in the match.
-	column 'Pontos sofridos'
+	column 'Points Against'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: points_against
 
 	/// Team result in the match.
-	column Resultado
+	column Result
 		dataType: string
 		summarizeBy: none
 		sourceColumn: result
 
 	/// Field goals made.
-	column 'Arremessos convertidos'
+	column 'Field Goals Made'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: field_goals_made
 
 	/// Field goals attempted.
-	column 'Arremessos tentados'
+	column 'Field Goals Attempted'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: field_goals_attempted
 
 	/// Three-point field goals made.
-	column 'Bolas de três convertidas'
+	column 'Three Pointers Made'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: three_point_field_goals_made
 
 	/// Three-point field goals attempted.
-	column 'Bolas de três tentadas'
+	column 'Three Pointers Attempted'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: three_point_field_goals_attempted
 
 	/// Free throws made.
-	column 'Lances livres convertidos'
+	column 'Free Throws Made'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: free_throws_made
 
 	/// Free throws attempted.
-	column 'Lances livres tentados'
+	column 'Free Throws Attempted'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: free_throws_attempted
 
 	/// Team rebounds.
-	column Rebotes
+	column Rebounds
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: rebounds
 
 	/// Team assists.
-	column Assistências
+	column Assists
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: assists
 
 	/// Team steals.
-	column Roubos
+	column Steals
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: steals
 
 	/// Team blocks.
-	column Tocos
+	column Blocks
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: blocks
 
 	/// Team turnovers.
-	column 'Perdas de bola'
+	column Turnovers
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: turnovers
 
 	/// Points scored in the paint.
-	column 'Pontos no garrafão'
+	column 'Points in the Paint'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: points_in_paint
 
 	/// Fast break points.
-	column 'Pontos em contra-ataque'
+	column 'Fast Break Points'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: fast_break_points
 
-	partition 'Estatísticas de Times' = entity
+	partition 'Team Statistics' = entity
 		mode: directLake
 		source
 			entityName: gold_espn_team_boxscores

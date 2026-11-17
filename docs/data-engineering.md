@@ -38,9 +38,11 @@ The [pipeline definition](../fabric-artifacts/pipeline/ESPN_Processar_Lotes.json
 is an export of the actual activity graph, with workspace and notebook IDs
 replaced. Notebook activities have retries; 60-second waits separate stages,
 including the final wait before `Hoop_Public_Publish`. Notebook 16 resolves
-the uniquely named `NBA Analise Jogadores` model in its current workspace,
+the uniquely named `NBA Player Analysis` model in its current workspace,
 requests refresh and waits for completion; the scheduled identity must be
-allowed to refresh it.
+allowed to refresh it. This name is part of the prepared migration; the
+production notebook and model still use the previous Portuguese name until
+the coordinated deployment.
 
 The existing schedule is 03:00 `E. South America Standard Time`, expiring
 30 June 2027. A successful isolated scheduled test exercised Gold, the wait

@@ -67,7 +67,7 @@ class PlayerCollectionTests(unittest.TestCase):
 
 class SemanticModelRefreshTests(unittest.TestCase):
     def setUp(self):
-        source = (Path(__file__).parents[1] / "notebooks" / "16_ESPN_Players_Gold.py").read_text(
+        source = (Path(__file__).parents[1] / "notebooks" / "gold" / "16_ESPN_Players_Gold.py").read_text(
             encoding="utf-8"
         )
         function = next(
@@ -84,7 +84,7 @@ class SemanticModelRefreshTests(unittest.TestCase):
         self.session = Mock()
 
     def test_waits_until_refresh_completes(self):
-        model_list = response({"value": [{"name": "NBA Analise Jogadores", "id": "model"}]})
+        model_list = response({"value": [{"name": "NBA Player Analysis", "id": "model"}]})
         pending = response({"status": "Unknown"})
         completed = response({"status": "Completed"})
         self.session.get.side_effect = [model_list, pending, completed]
@@ -105,7 +105,7 @@ class SemanticModelRefreshTests(unittest.TestCase):
         sleep.assert_called_once_with(10)
 
     def test_rejects_missing_or_ambiguous_model_without_triggering_refresh(self):
-        model = {"name": "NBA Analise Jogadores", "id": "model"}
+        model = {"name": "NBA Player Analysis", "id": "model"}
         for models in ([], [model, model]):
             with self.subTest(count=len(models)):
                 self.session.get.return_value = response({"value": models})
@@ -116,7 +116,7 @@ class SemanticModelRefreshTests(unittest.TestCase):
 
     def test_surfaces_failed_refresh(self):
         self.session.get.side_effect = [
-            response({"value": [{"name": "NBA Analise Jogadores", "id": "model"}]}),
+            response({"value": [{"name": "NBA Player Analysis", "id": "model"}]}),
             response({"status": "Failed", "messages": ["refresh error"]}),
         ]
         self.session.post.return_value = Mock(headers={
@@ -128,7 +128,7 @@ class SemanticModelRefreshTests(unittest.TestCase):
 
     def test_times_out_if_refresh_never_finishes(self):
         self.session.get.return_value = response({
-            "value": [{"name": "NBA Analise Jogadores", "id": "model"}]
+            "value": [{"name": "NBA Player Analysis", "id": "model"}]
         })
         self.session.post.return_value = Mock(headers={
             "x-ms-request-id": "d0e99488-1946-478e-9664-44a2ae2d4117"

@@ -1,43 +1,43 @@
 /// Points by team and period in finished matches.
-table Períodos
+table Periods
 
 	/// ESPN game identifier.
-	column 'Jogo Id'
+	column 'Game Id'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: game_id
 
 	/// ESPN team identifier.
-	column 'Time Id'
+	column 'Team Id'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: team_id
 
 	/// Team that scored the points.
-	column Time
+	column Team
 		dataType: string
 		summarizeBy: none
 		sourceColumn: team_name
 
 	/// Period number, including overtimes.
-	column Período
+	column Period
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: period_number
 
 	/// Period description published by the source.
-	column 'Descrição do período'
+	column 'Period Description'
 		dataType: string
 		summarizeBy: none
 		sourceColumn: period_label
 
 	/// Team points in the period.
-	column 'Pontos no período'
+	column 'Period Points'
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: points
 
-	partition Períodos = entity
+	partition Periods = entity
 		mode: directLake
 		source
 			entityName: gold_espn_game_periods

@@ -39,8 +39,13 @@ describe('filtros DAX', () => {
     expect(() => queryFor('games', { column:'Jogador Id', id:'1' })).toThrow();
   });
   it('filtra participações por time sem permitir colunas fora da tabela', () => {
-    expect(queryFor('participation', { column:'Time Id', id:'2' })).toContain("'Participações'[Time Id] = \"2\"");
+    expect(queryFor('participation', { column:'Time Id', id:'2' })).toContain("'Player Games'[Team Id] = \"2\"");
     expect(() => queryFor('games', { column:'Time Id', id:'2' })).toThrow();
+  });
+  it('uses English semantic-model names while preserving snapshot keys', () => {
+    expect(queryFor('games')).toContain(`"c0", 'Games'[Game Id]`);
+    expect(queryFor('players')).toContain(`"c1", 'Players'[Player]`);
+    expect(queryFor('periods')).toContain(`'Periods'[Period Description]`);
   });
 });
 describe('médias da temporada por jogador', () => {

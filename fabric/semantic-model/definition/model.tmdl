@@ -1,5 +1,5 @@
 /// NBA player analysis by game, with public ESPN data.
-model 'NBA Analise Jogadores'
+model 'NBA Player Analysis'
 	culture: pt-BR
 	defaultPowerBIDataSourceVersion: powerBI_V3
 	discourageImplicitMeasures
@@ -14,10 +14,10 @@ annotation __PBI_ServiceStoredInTmdl = reserved
 
 annotation __LastRPTime = 134392832817649446
 
-ref table Jogadores
-ref table Participations
+ref table Players
+ref table 'Player Games'
 ref table Calendar
-ref table Partidas
-ref table Team_Statistics
+ref table Games
+ref table 'Team Statistics'
 ref table Periods
 

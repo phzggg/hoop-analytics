@@ -4,13 +4,37 @@ type Value = string | number | boolean | null;
 export type Row = Record<string, Value>;
 
 export const fields = {
-  games: ['Partidas', ['Jogo Id', 'Data', 'Temporada', 'Fase', 'Mandante Id', 'Mandante', 'Sigla mandante', 'Logo mandante', 'Visitante Id', 'Visitante', 'Sigla visitante', 'Logo visitante', 'Pontos mandante', 'Pontos visitante', 'Situação']],
-  players: ['Jogadores', ['Jogador Id', 'Jogador', 'Posição', 'Foto']],
-  participation: ['Participações', ['Jogo Id', 'Jogador Id', 'Data do jogo', 'Time', 'Time Id', 'Temporada', 'Fase', 'Titular', 'Pontos brutos', 'Rebotes brutos', 'Assistências brutas', 'Minutos brutos', 'Arremessos convertidos', 'Arremessos tentados', 'Bolas de três convertidas', 'Bolas de três tentadas', 'Roubos', 'Tocos', 'Perdas de bola', 'Mais menos', 'Lances livres convertidos', 'Lances livres tentados']],
-  leagueParticipation: ['Participações', ['Jogo Id', 'Jogador Id', 'Data do jogo', 'Time', 'Time Id', 'Temporada', 'Fase', 'Pontos brutos', 'Rebotes brutos', 'Assistências brutas', 'Minutos brutos', 'Arremessos convertidos', 'Arremessos tentados', 'Bolas de três convertidas', 'Bolas de três tentadas', 'Roubos', 'Tocos', 'Perdas de bola', 'Mais menos', 'Lances livres convertidos', 'Lances livres tentados']],
-  teamStats: ['Estatísticas de Times', ['Jogo Id', 'Time Id', 'Time', 'Rebotes', 'Assistências', 'Roubos', 'Tocos', 'Perdas de bola', 'Arremessos convertidos', 'Arremessos tentados', 'Bolas de três convertidas', 'Bolas de três tentadas', 'Lances livres convertidos', 'Lances livres tentados']],
-  periods: ['Períodos', ['Jogo Id', 'Time Id', 'Período', 'Descrição do período', 'Pontos no período']],
+  games: ['Games', ['Jogo Id', 'Data', 'Temporada', 'Fase', 'Mandante Id', 'Mandante', 'Sigla mandante', 'Logo mandante', 'Visitante Id', 'Visitante', 'Sigla visitante', 'Logo visitante', 'Pontos mandante', 'Pontos visitante', 'Situação']],
+  players: ['Players', ['Jogador Id', 'Jogador', 'Posição', 'Foto']],
+  participation: ['Player Games', ['Jogo Id', 'Jogador Id', 'Data do jogo', 'Time', 'Time Id', 'Temporada', 'Fase', 'Titular', 'Pontos brutos', 'Rebotes brutos', 'Assistências brutas', 'Minutos brutos', 'Arremessos convertidos', 'Arremessos tentados', 'Bolas de três convertidas', 'Bolas de três tentadas', 'Roubos', 'Tocos', 'Perdas de bola', 'Mais menos', 'Lances livres convertidos', 'Lances livres tentados']],
+  leagueParticipation: ['Player Games', ['Jogo Id', 'Jogador Id', 'Data do jogo', 'Time', 'Time Id', 'Temporada', 'Fase', 'Pontos brutos', 'Rebotes brutos', 'Assistências brutas', 'Minutos brutos', 'Arremessos convertidos', 'Arremessos tentados', 'Bolas de três convertidas', 'Bolas de três tentadas', 'Roubos', 'Tocos', 'Perdas de bola', 'Mais menos', 'Lances livres convertidos', 'Lances livres tentados']],
+  teamStats: ['Team Statistics', ['Jogo Id', 'Time Id', 'Time', 'Rebotes', 'Assistências', 'Roubos', 'Tocos', 'Perdas de bola', 'Arremessos convertidos', 'Arremessos tentados', 'Bolas de três convertidas', 'Bolas de três tentadas', 'Lances livres convertidos', 'Lances livres tentados']],
+  periods: ['Periods', ['Jogo Id', 'Time Id', 'Período', 'Descrição do período', 'Pontos no período']],
 } as const;
+
+// Snapshot v1 retains its existing keys; only the semantic-model names change.
+const modelColumns: Record<string, string> = {
+  'Jogo Id': 'Game Id', 'Jogador Id': 'Player Id', 'Data': 'Date', 'Data do jogo': 'Game Date',
+  'Temporada': 'Season', 'Fase': 'Season Phase', 'Mandante Id': 'Home Team Id',
+  'Mandante': 'Home Team', 'Sigla mandante': 'Home Team Abbreviation', 'Logo mandante': 'Home Team Logo',
+  'Visitante Id': 'Away Team Id', 'Visitante': 'Away Team', 'Sigla visitante': 'Away Team Abbreviation',
+  'Logo visitante': 'Away Team Logo', 'Pontos mandante': 'Home Score', 'Pontos visitante': 'Away Score',
+  'Situação': 'Status', 'Jogador': 'Player', 'Posição': 'Position', 'Foto': 'Photo',
+  'Time': 'Team', 'Time Id': 'Team Id', 'Titular': 'Starter', 'Pontos brutos': 'Raw Points',
+  'Rebotes brutos': 'Raw Rebounds', 'Assistências brutas': 'Raw Assists', 'Minutos brutos': 'Raw Minutes',
+  'Arremessos convertidos': 'Field Goals Made', 'Arremessos tentados': 'Field Goals Attempted',
+  'Bolas de três convertidas': 'Three Pointers Made', 'Bolas de três tentadas': 'Three Pointers Attempted',
+  'Lances livres convertidos': 'Free Throws Made', 'Lances livres tentados': 'Free Throws Attempted',
+  'Roubos': 'Steals', 'Tocos': 'Blocks', 'Perdas de bola': 'Turnovers', 'Mais menos': 'Plus Minus',
+  'Rebotes': 'Rebounds', 'Assistências': 'Assists', 'Período': 'Period',
+  'Descrição do período': 'Period Description', 'Pontos no período': 'Period Points',
+};
+
+function modelColumn(name: string): string {
+  const column = modelColumns[name];
+  if (!column) throw new Error(`Missing semantic-model mapping for ${name}.`);
+  return column;
+}
 
 export function idLiteral(id: string): string {
   if (!/^\d+$/.test(id)) throw new Error('Invalid identifier.');
@@ -20,8 +44,8 @@ export function idLiteral(id: string): string {
 export function queryFor(kind: keyof typeof fields, filter?: { column: 'Jogo Id' | 'Jogador Id' | 'Time Id'; id: string }) {
   const [table, columns] = fields[kind];
   if (filter && !(columns as readonly string[]).includes(filter.column)) throw new Error('Invalid filter.');
-  const source = filter ? `FILTER('${table}', '${table}'[${filter.column}] = ${idLiteral(filter.id)})` : `'${table}'`;
-  return `EVALUATE SELECTCOLUMNS(${source}, ${columns.map((column, i) => `"c${i}", '${table}'[${column}]`).join(', ')})`;
+  const source = filter ? `FILTER('${table}', '${table}'[${modelColumn(filter.column)}] = ${idLiteral(filter.id)})` : `'${table}'`;
+  return `EVALUATE SELECTCOLUMNS(${source}, ${columns.map((column, i) => `"c${i}", '${table}'[${modelColumn(column)}]`).join(', ')})`;
 }
 
 async function executeRows(client: FabricClient, query: string, names: readonly string[]): Promise<Row[]> {
@@ -61,8 +85,8 @@ export async function readLeagueRows(client: AppClient, season: string, phase: s
   }
   const [table, columns] = fields.leagueParticipation;
   const literal = (value: string) => `"${value.replace(/"/g, '""')}"`;
-  const source = `FILTER('${table}', '${table}'[Temporada] = ${literal(season)} && '${table}'[Fase] = ${literal(phase)})`;
-  const query = `EVALUATE SELECTCOLUMNS(${source}, ${columns.map((column, i) => `"c${i}", '${table}'[${column}]`).join(', ')})`;
+  const source = `FILTER('${table}', '${table}'[Season] = ${literal(season)} && '${table}'[Season Phase] = ${literal(phase)})`;
+  const query = `EVALUATE SELECTCOLUMNS(${source}, ${columns.map((column, i) => `"c${i}", '${table}'[${modelColumn(column)}]`).join(', ')})`;
   return executeRows(client, query, columns);
 }
 

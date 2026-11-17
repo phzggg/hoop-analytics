@@ -1,20 +1,20 @@
-relationship 'Jogadores por Id'
-	fromColumn: Participations.'Jogador Id'
-	toColumn: Jogadores.'Jogador Id'
+relationship 'Players by Id'
+	fromColumn: 'Player Games'.'Player Id'
+	toColumn: Players.'Player Id'
 
-relationship 'Partidas por Data'
-	fromColumn: Partidas.Data
-	toColumn: Calendar.Data
+relationship 'Games by Date'
+	fromColumn: Games.Date
+	toColumn: Calendar.Date
 
-relationship 'Participações por Partida'
-	fromColumn: Participations.'Jogo Id'
-	toColumn: Partidas.'Jogo Id'
+relationship 'Player Games by Game'
+	fromColumn: 'Player Games'.'Game Id'
+	toColumn: Games.'Game Id'
 
-relationship 'Times por Partida'
-	fromColumn: Team_Statistics.'Jogo Id'
-	toColumn: Partidas.'Jogo Id'
+relationship 'Teams by Game'
+	fromColumn: 'Team Statistics'.'Game Id'
+	toColumn: Games.'Game Id'
 
-relationship 'Períodos por Partida'
-	fromColumn: Periods.'Jogo Id'
-	toColumn: Partidas.'Jogo Id'
+relationship 'Periods by Game'
+	fromColumn: Periods.'Game Id'
+	toColumn: Games.'Game Id'
 
